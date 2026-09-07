@@ -10,7 +10,7 @@ const sizes = {
   md: 'w-12 h-12',
   lg: 'w-20 h-20',
   xl: 'w-32 h-32',
-  hero: 'w-full aspect-[4/5] max-h-[52vh]',
+  hero: 'w-full aspect-[4/5] max-h-[min(52vh,420px)] lg:max-h-[min(56vh,520px)]',
 };
 
 export function ColorSwatch({

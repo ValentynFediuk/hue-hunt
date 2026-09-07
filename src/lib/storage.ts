@@ -70,10 +70,11 @@ export function seedDemoState(base: AppState = createEmptyState()): AppState {
     hunts,
     settings: { ...base.settings, demoSeeded: true },
     stats: {
-      currentStreak: 0, // demo days are past; streak resumes when user completes today
-      bestStreak: 3,
-      totalCompleted: hunts.length,
-      lastCompletedDateKey: hunts[0]?.dateKey ?? null,
+      // Demo entries are display-only; counters stay empty until a real hunt
+      currentStreak: 0,
+      bestStreak: 0,
+      totalCompleted: 0,
+      lastCompletedDateKey: null,
     },
   };
 }
@@ -122,12 +123,9 @@ export function clearState(): void {
  * Friendly: missing a day resets current streak; best is preserved.
  */
 export function recomputeStats(hunts: HuntEntry[], todayKey: string = toDateKey()): AppStats {
-  const completed = hunts
-    .filter((h) => !h.isDemo || true)
-    .slice()
-    .sort((a, b) => (a.dateKey < b.dateKey ? 1 : -1));
-
-  const uniqueDates = [...new Set(completed.map((h) => h.dateKey))].sort().reverse();
+  // Demo placeholders must not inflate streak or "completed" counters.
+  const real = hunts.filter((h) => !h.isDemo);
+  const uniqueDates = [...new Set(real.map((h) => h.dateKey))].sort().reverse();
   const totalCompleted = uniqueDates.length;
   const lastCompletedDateKey = uniqueDates[0] ?? null;
 
@@ -148,7 +146,7 @@ export function recomputeStats(hunts: HuntEntry[], todayKey: string = toDateKey(
     }
   }
 
-  // best streak: scan consecutive runs
+  // best streak: scan consecutive runs (real hunts only)
   let bestStreak = 0;
   let run = 0;
   const ascending = [...uniqueDates].sort();

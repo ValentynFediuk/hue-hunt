@@ -3,7 +3,7 @@ import { BottomNav } from './BottomNav';
 import { DesktopNav } from './DesktopNav';
 import { useApp } from '@/context/AppContext';
 
-const hideNavPaths = ['/onboarding', '/hunt', '/complete', '/privacy', '/terms'];
+const hideNavPaths = ['/onboarding', '/hunt', '/complete'];
 
 export function AppShell() {
   const { pathname } = useLocation();

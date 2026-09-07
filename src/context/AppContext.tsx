@@ -17,7 +17,6 @@ import {
   loadState,
   recomputeStats,
   saveState,
-  seedDemoState,
 } from '@/lib/storage';
 import type {
   AppSettings,
@@ -158,7 +157,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const colorsThisWeek = useMemo(() => {
     const start = startOfWeekKey(todayKey);
-    return state.hunts.filter((h) => isSameOrAfter(h.dateKey, start)).length;
+    return state.hunts.filter(
+      (h) => !h.isDemo && isSameOrAfter(h.dateKey, start),
+    ).length;
   }, [state.hunts, todayKey]);
 
   const completeHunt = useCallback(
@@ -258,11 +259,8 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const resetAllData = useCallback(() => {
     clearState();
     trackEvent('data_reset');
-    let next = seedDemoState(createEmptyState());
-    next = ensureTodayChallenge(next, todayKey);
-    next = { ...next, stats: recomputeStats(next.hunts, todayKey) };
-    // Fresh start: clear demo too if user wants empty? Spec says reset all — empty + onboarding
-    next = {
+    // Spec: full wipe — empty state, onboarding again, no demo seed
+    const next: AppState = {
       ...createEmptyState(),
       todayChallenge: { dateKey: todayKey, colorId: pickDailyColor(todayKey).id },
     };
