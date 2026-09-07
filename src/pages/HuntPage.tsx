@@ -17,7 +17,7 @@ export function HuntPage() {
 
   if (isTodayComplete) {
     return (
-      <div className="safe-pt safe-px px-5 min-h-full flex flex-col justify-center items-center text-center gap-4">
+      <div className="safe-pt safe-px px-5 min-h-full flex flex-col justify-center items-center text-center gap-4 page-narrow">
         <p className="text-lg font-medium">You’ve already completed today’s hunt.</p>
         <Button onClick={() => navigate('/')}>Back home</Button>
       </div>
@@ -59,7 +59,7 @@ export function HuntPage() {
   };
 
   return (
-    <div className="safe-pt safe-px px-5 pb-8 min-h-full flex flex-col">
+    <div className="safe-pt safe-px px-5 pb-8 min-h-full flex flex-col page-narrow lg:py-10">
       <header className="flex items-center gap-3 pt-2 pb-4">
         <button
           type="button"

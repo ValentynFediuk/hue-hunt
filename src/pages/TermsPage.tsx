@@ -3,7 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 
 export function TermsPage() {
   return (
-    <div className="safe-pt safe-px px-5 pb-12 min-h-full">
+    <div className="safe-pt safe-px px-5 pb-12 min-h-full page-narrow lg:py-10">
       <header className="flex items-center gap-3 pt-2 pb-6">
         <Link
           to="/settings"

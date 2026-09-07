@@ -16,10 +16,10 @@ const items: {
 export function BottomNav() {
   return (
     <nav
-      className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] z-40 border-t border-black/5 dark:border-white/10 bg-[color-mix(in_srgb,var(--color-canvas)_88%,transparent)] dark:bg-[color-mix(in_srgb,var(--color-canvas-dark)_88%,transparent)] backdrop-blur-xl safe-pb"
+      className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-black/5 dark:border-white/10 bg-[color-mix(in_srgb,var(--color-canvas)_88%,transparent)] dark:bg-[color-mix(in_srgb,var(--color-canvas-dark)_88%,transparent)] backdrop-blur-xl safe-pb"
       aria-label="Main"
     >
-      <ul className="grid grid-cols-4 h-[64px] px-1">
+      <ul className="grid grid-cols-4 h-[64px] px-1 max-w-lg mx-auto">
         {items.map(({ to, label, icon: Icon, end }) => (
           <li key={to} className="min-w-0">
             <NavLink

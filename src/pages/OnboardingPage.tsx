@@ -38,7 +38,7 @@ export function OnboardingPage() {
   };
 
   return (
-    <div className="app-shell bg-[var(--color-canvas)] dark:bg-[var(--color-canvas-dark)] text-zinc-900 dark:text-zinc-50 safe-pt safe-px px-6 pb-10 min-h-dvh flex flex-col">
+    <div className="w-full max-w-lg mx-auto bg-[var(--color-canvas)] dark:bg-[var(--color-canvas-dark)] text-zinc-900 dark:text-zinc-50 safe-pt safe-px px-6 pb-10 min-h-dvh flex flex-col lg:justify-center lg:max-w-xl lg:py-16">
       <div className="flex justify-end pt-3">
         <button
           type="button"

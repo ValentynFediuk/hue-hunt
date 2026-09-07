@@ -87,32 +87,36 @@
     padding-right: max(1rem, env(safe-area-inset-right));
   }
 
+  /* Mobile: full-bleed app shell. Desktop (lg+): wide website layout. */
   .app-shell {
     width: 100%;
-    max-width: 430px;
+    max-width: 100%;
     margin-inline: auto;
     min-height: 100dvh;
     position: relative;
   }
 
-  @media (min-width: 768px) {
-    .app-shell {
-      max-width: 430px;
-      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 24px 80px rgba(0, 0, 0, 0.12);
-      border-radius: 28px;
-      margin-top: 24px;
-      margin-bottom: 24px;
-      min-height: calc(100dvh - 48px);
-      overflow: hidden;
-      background: inherit;
+  .site-container {
+    width: 100%;
+    max-width: 1120px;
+    margin-inline: auto;
+    padding-inline: max(1.25rem, env(safe-area-inset-left));
+    padding-inline-end: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  .page-narrow {
+    width: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .site-container {
+      padding-inline: 2rem;
     }
 
-    body {
-      background: #e8e4de;
-    }
-
-    html.dark body {
-      background: #050505;
+    /* Focused flows stay readable on wide screens (not a phone frame) */
+    .page-narrow {
+      max-width: 520px;
+      margin-inline: auto;
     }
   }
 

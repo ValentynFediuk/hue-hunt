@@ -28,7 +28,7 @@ export function CompletePage() {
   if (!isTodayComplete || !todayEntry) return null;
 
   return (
-    <div className="relative safe-pt safe-px px-5 pb-10 min-h-full overflow-hidden flex flex-col">
+    <div className="relative safe-pt safe-px px-5 pb-10 min-h-full overflow-hidden flex flex-col page-narrow lg:py-10">
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
         {confetti.map((c) => (
           <span

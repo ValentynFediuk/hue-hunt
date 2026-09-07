@@ -12,7 +12,7 @@ export function HuntDetailPage() {
 
   if (!hunt) {
     return (
-      <div className="safe-pt safe-px px-5 min-h-full flex flex-col items-center justify-center gap-4 text-center">
+      <div className="safe-pt safe-px px-5 min-h-full flex flex-col items-center justify-center gap-4 text-center site-container">
         <p>Hunt not found.</p>
         <Button onClick={() => navigate('/history')}>Back to history</Button>
       </div>
@@ -20,7 +20,8 @@ export function HuntDetailPage() {
   }
 
   return (
-    <div className="safe-pt safe-px px-5 pb-10 min-h-full flex flex-col">
+    <div className="safe-pt safe-px px-5 lg:px-0 pb-10 lg:pb-16 min-h-full">
+      <div className="site-container lg:pt-8 lg:max-w-xl flex flex-col min-h-full">
       <header className="flex items-center gap-3 pt-2 pb-4">
         <button
           type="button"
@@ -72,6 +73,7 @@ export function HuntDetailPage() {
         <Button fullWidth variant="secondary" onClick={() => navigate('/collection')}>
           View collection
         </Button>
+      </div>
       </div>
     </div>
   );
